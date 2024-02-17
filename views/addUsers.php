@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row mt-4">
         <div class="col-md-8">
-          <h2>Users</h2>
+          <h2>Add Users</h2>
         </div>
     </div>
 </div>

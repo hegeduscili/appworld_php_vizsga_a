@@ -1,14 +1,19 @@
 <?php
 
+include('./classes/PageController.php');
+use classes\PageController;
+
 $url = $_SERVER['REQUEST_URI'];
+
+$page = new PageController;
 
 switch ($url) {
     case '/':
-
+        $page -> listUsers();
         break;
 
-    case '/addusers':
-
+    case '/addUsers':
+        $page -> addUsers();
         break;
 
     case '/editusers':

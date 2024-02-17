@@ -8,5 +8,11 @@ class PageController{
 
     }
 
-    
+    function listUsers(){
+        include(__DIR__."/../views/".__FUNCTION__.".php");
+    }
+
+    function addUsers(){
+        include(__DIR__."/../views/".__FUNCTION__.".php");
+    }
 }
