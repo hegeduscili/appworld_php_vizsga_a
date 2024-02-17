@@ -14,6 +14,9 @@
             <a class="nav-link mx-2" href="/addUsers">Add Users</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link mx-2" href="/register">Register</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link mx-2" href="/login">Login</a>
           </li>
           <li class="nav-item">

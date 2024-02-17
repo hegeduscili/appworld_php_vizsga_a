@@ -9,13 +9,7 @@
 
 <?php include(__DIR__ . './../includes/menu.php') ?>
 
-<div class="container">
-    <div class="row mt-4">
-        <div class="col-md-8">
-          <h2>Users</h2>
-        </div>
-    </div>
-</div>
+
 
   <?php include(__DIR__ . './../includes/scripts.php') ?>
 </body>

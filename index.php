@@ -1,6 +1,7 @@
 <?php
 
 include('./classes/PageController.php');
+
 use classes\PageController;
 
 $url = $_SERVER['REQUEST_URI'];
@@ -9,15 +10,26 @@ $page = new PageController;
 
 switch ($url) {
     case '/':
-        $page -> listUsers();
+        $page->listUsers();
         break;
 
     case '/addUsers':
-        $page -> addUsers();
+        $page->addUsers();
         break;
 
-    case '/editusers':
+    case '/register':
 
+        if($_SERVER['REQUEST_METHOD'] !== 'POST'){
+            $page->register();
+        }else{
+            $page -> registerProgress();
+        }
+
+       
+        break;
+
+    case '/login':
+        $page->login();
         break;
 
     default:
