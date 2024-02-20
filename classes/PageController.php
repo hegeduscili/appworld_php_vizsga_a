@@ -2,16 +2,20 @@
 
 namespace classes;
 
-use models\Register;
+
+use models\Model;
+include(__DIR__ . "/../models/Model.php");
+
+use models\User; //ez is kell ide 
+include(__DIR__ . "/../models/User.php"); //csak ezzel a módszerrel működik a namespaccel nem, pedig probáltam!!!
 
 class PageController
 {
-
     public $connection;
 
     function __construct($connection)
     {
-        $this -> connection = $connection;
+        $this->connection = $connection;
     }
 
     function listUsers()
@@ -33,6 +37,8 @@ class PageController
     {
         include(__DIR__ . "/../views/" . __FUNCTION__ . ".php");
     }
+    
+
 
     function registerProgress()
     {
@@ -55,8 +61,11 @@ class PageController
         }
 
         if (count($errors) === 0) {
+
+            $user = new User;
+            print $user->insert($_POST, $this->connection);
+exit;
             $_SESSION["success"] = 'Sikeres regisztráció!';
-            print $register -> insert($_POST, $this->connection);
         } else {
             $_SESSION["errors"] = $errors;
         }
