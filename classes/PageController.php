@@ -2,13 +2,16 @@
 
 namespace classes;
 
+use models\Register;
+
 class PageController
 {
 
     public $connection;
 
-    function __construct()
+    function __construct($connection)
     {
+        $this -> connection = $connection;
     }
 
     function listUsers()
@@ -53,6 +56,7 @@ class PageController
 
         if (count($errors) === 0) {
             $_SESSION["success"] = 'Sikeres regisztráció!';
+            print $register -> insert($_POST, $this->connection);
         } else {
             $_SESSION["errors"] = $errors;
         }
@@ -61,6 +65,8 @@ class PageController
         header("location:" . $_SERVER["HTTP_REFERER"]);
         exit;
     }
+
+
 
     function __destruct()
     {

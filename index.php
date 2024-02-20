@@ -1,13 +1,15 @@
 <?php
 session_start();
 
+$connection = mysqli_connect("localhost", "root", "", "appworld_php_a");
+
 include('./classes/PageController.php');
 
 use classes\PageController;
 
 $url = $_SERVER['REQUEST_URI'];
 
-$page = new PageController;
+$page = new PageController($connection);
 
 switch ($url) {
     case '/':
