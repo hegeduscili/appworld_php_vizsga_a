@@ -1,13 +1,16 @@
 <?php
-session_start();
-
-include('./classes/PageController.php');
- 
-use classes\PageController;
 
 $connection = mysqli_connect("localhost", "root", '', "appworld_php_a");
 
+spl_autoload_register(function ($namespacedfile) {
+    require(__DIR__ . DIRECTORY_SEPARATOR . str_replace("\\", DIRECTORY_SEPARATOR, "$namespacedfile.php"));
+});
+
+
+use classes\PageController;
+
 $url = $_SERVER['REQUEST_URI'];
+
 
 $page = new PageController($connection);
 

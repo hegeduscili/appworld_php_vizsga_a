@@ -5,8 +5,6 @@ namespace models;
 use models\Model;
 
 class User extends Model{
-    public $table = 'users';
-
-    
+    public $table = 'users1';
 
 }

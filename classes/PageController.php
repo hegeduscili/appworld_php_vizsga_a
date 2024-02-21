@@ -1,51 +1,55 @@
 <?php
 
+
 namespace classes;
+session_start();
 
+use classes\Controller;
+use traits\Utils; 
 
-use models\Model;
-include(__DIR__ . "/../models/Model.php");
-
-use models\User; //ez is kell ide 
-include(__DIR__ . "/../models/User.php"); //csak ezzel a módszerrel működik a namespaccel nem, pedig probáltam!!!
-
-class PageController
+class PageController extends Controller
 {
     public $connection;
 
+    use Utils;
+
     function __construct($connection)
     {
-        $this->connection = $connection;
+      $this->connection = $connection;
     }
 
     function listUsers()
     {
-        include(__DIR__ . "/../views/" . __FUNCTION__ . ".php");
+        $this->getView(__FUNCTION__);
     }
 
     function addUsers()
     {
-        include(__DIR__ . "/../views/" . __FUNCTION__ . ".php");
+        $this->getView(__FUNCTION__);
     }
 
     function login()
     {
-        include(__DIR__ . "/../views/" . __FUNCTION__ . ".php");
+        $this->getView(__FUNCTION__);
     }
 
     function register()
     {
-        include(__DIR__ . "/../views/" . __FUNCTION__ . ".php");
+        $this->getView(__FUNCTION__);
     }
-    
+
 
 
     function registerProgress()
     {
         $errors = [];
 
-        if (strlen($_POST["name"]) < 3 || strlen($_POST["name"]) > 30) {
-            $errors[] = 'A névnek minimum 3, maximum 30 karakterből kell állnia!';
+        if (strlen($_POST["uname"]) < 3 || strlen($_POST["uname"]) > 30) {
+            $errors[] = 'A felhasználónévnek minimum 3, maximum 30 karakterből kell állnia!';
+        }
+
+        if (strlen($_POST["fullname"]) < 5 || strlen($_POST["fullname"]) > 40) {
+            $errors[] = 'A névnek minimum 5, maximum 40 karakterből kell állnia!';
         }
 
         if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) === false) {
@@ -62,9 +66,9 @@ class PageController
 
         if (count($errors) === 0) {
 
-            $user = new User;
-            print $user->insert($_POST, $this->connection);
-exit;
+            // $user = new User;
+            // print $user->insert($_POST, $this->connection);
+            // exit;
             $_SESSION["success"] = 'Sikeres regisztráció!';
         } else {
             $_SESSION["errors"] = $errors;
@@ -74,7 +78,6 @@ exit;
         header("location:" . $_SERVER["HTTP_REFERER"]);
         exit;
     }
-
 
 
     function __destruct()

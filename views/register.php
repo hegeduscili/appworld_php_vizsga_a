@@ -23,8 +23,13 @@
                                     <h2 class="fw-bold mb-2 text-uppercase text-center">Register</h2>
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="name">Name</label>
-                                        <input type="text" id="name" class="form-control form-control-lg" name="name" required />
+                                        <label class="form-label" for="uname">User name</label>
+                                        <input type="text" id="uname" class="form-control form-control-lg" name="uname" required />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="fullname">Full name</label>
+                                        <input type="text" id="fullname" class="form-control form-control-lg" name="fullname" required />
                                     </div>
 
                                     <div class="mb-3">
